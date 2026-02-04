@@ -1,6 +1,5 @@
 # BepinEx Setup
 
-Following -> docs.bepinex.dev/articles/dev_guide/plugin_tutorial/1_setup.html
 Support Docs -> https://docs.google.com/document/d/1BZiUrSiT8kKvWIEvx5DObThL4HMGVI1CluJR20CWBU0/preview?tab=t.0
 Harmony -> https://harmony.pardeike.net/articles/basics.html
 
