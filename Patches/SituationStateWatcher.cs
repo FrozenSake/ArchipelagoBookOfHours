@@ -1,8 +1,6 @@
-using BepInEx;
-using BepInEx.Logging;
 using HarmonyLib;
 using ArchipelagoBookOfHours.Archipelago;
-using ArchipelagoBookOfHours.Utils;
+using ArchipelagoBookOfHours.Stationery;
 using UnityEngine;
 using SecretHistories.Entities;
 using SecretHistories.States;
@@ -16,7 +14,7 @@ public class TransitionToStateWatcher
     [HarmonyPatch("TransitionToState")]
     public static void Prefix(Situation __instance, SituationState newState)
     {
-        Plugin.BepinLogger.LogMessage($"Hello from TransitionToState.Prefix() on {__instance.Id}");
-        Plugin.BepinLogger.LogMessage($"The new state is: {newState.Identifier}");
+        ArchipelagoCatalogue.Scribe.LogInfo("TransitionToStateWatcher:Prefix", $"Instance: {__instance.Id}");
+        ArchipelagoCatalogue.Scribe.LogInfo("TransitionToStateWatcher:Prefix", $"The new state is: {newState.Identifier}");
     }
 }

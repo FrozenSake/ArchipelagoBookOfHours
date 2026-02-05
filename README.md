@@ -10,3 +10,32 @@ Harmony -> https://harmony.pardeike.net/articles/basics.html
 4. Copy the `Archipelago.MultiClient.Net.dll` into the BepInEx plugins
 5. `dotnet build` the client
 6. Copy the `ArchipelagoBookOfHours.dll` dll to the BepInEx plugins folder in book of hours
+
+
+# Code Terminology
+
+In keeping with the spirit of Book of Hours, and the Code we're interacting with here, I've decided to use some special (but made up) terminology in my mod:
+
+## Redactions (Currently `Patches`)
+
+Various harmony patches
+
+### Specters
+
+### Inkstains
+
+### Daemons
+
+## Dovecote (Currently `Archipelago`)
+
+Communicates with the Archipelago Server
+
+## Illuminations (Currently `Components`)
+
+UI Elements
+
+## Stationery (Currently `Utils`)
+
+Miscellaneous helpers and utilities
+
+### Scribe (Logger)

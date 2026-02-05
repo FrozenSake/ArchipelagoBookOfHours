@@ -1,10 +1,11 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using BepInEx;
 using ArchipelagoBookOfHours.Archipelago;
+using ArchipelagoBookOfHours;
 using UnityEngine;
 
-namespace ArchipelagoBookOfHours.Utils;
+namespace ArchipelagoBookOfHours.Stationery;
 
 // Shamelessly retyped (so I'd learn from it) from https://github.com/alwaysintreble/ArchipelagoBepInExPluginTemplate/blob/master/templates/ArchipelagoBepin5Template/Utils/ArchipelagoConsole.cs
 // who shamelessly acquired it from oc2-modding https://github.com/toasterparty/oc2-modding/blob/main/OC2Modding/GameLog.cs
@@ -34,10 +35,10 @@ public static class ArchipelagoConsole
         UpdateWindow();
     }
 
-    public static void LogMessage(string Message)
+    public static void Msg(string Message)
     {
         // Early exit if there's no content
-        if (Message.IsNullOrWhiteSpace()) return;
+        if (String.IsNullOrWhiteSpace(Message)) return;
 
         // Make space in the scrollback for the new message
         if (logLines.Count == MaxLogLines)
@@ -45,7 +46,7 @@ public static class ArchipelagoConsole
             logLines.RemoveAt(0);
         }
 
-        Plugin.BepinLogger.LogMessage(Message);
+        ArchipelagoCatalogue.Scribe.LogInfo("ArchipelagoConsole:Msg", Message);
         lastUpdateTime = Time.time;
         UpdateWindow();
     }
@@ -72,9 +73,9 @@ public static class ArchipelagoConsole
         }
 
         CommandText = GUI.TextField(CommandTextRect, CommandText);
-        if (!CommandText.IsNullOrWhiteSpace() && GUI.Button(SendCommandButton, "Send"))
+        if (!String.IsNullOrWhiteSpace(CommandText) && GUI.Button(SendCommandButton, "Send"))
         {
-            Plugin.ArchipelagoClient.SendMessage(CommandText);
+            ArchipelagoBookOfHoursMod.ArchipelagoClient.SendMessage(CommandText);
             // Clear after sending
             CommandText = "";
         }

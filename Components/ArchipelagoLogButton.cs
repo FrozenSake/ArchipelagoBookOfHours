@@ -1,8 +1,6 @@
-using BepInEx;
-using BepInEx.Logging;
 using HarmonyLib;
 using ArchipelagoBookOfHours.Archipelago;
-using ArchipelagoBookOfHours.Utils;
+using ArchipelagoBookOfHours.Stationery;
 using UnityEngine;
 using SecretHistories.Spheres;
 

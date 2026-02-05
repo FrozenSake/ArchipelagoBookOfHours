@@ -7,7 +7,7 @@ using Archipelago.MultiClient.Net.Enums;
 using Archipelago.MultiClient.Net.Helpers;
 using Archipelago.MultiClient.Net.MessageLog.Messages;
 using Archipelago.MultiClient.Net.Packets;
-using ArchipelagoBookOfHours.Utils;
+using ArchipelagoBookOfHours.Stationery;
 
 namespace ArchipelagoBookOfHours.Archipelago;
 
@@ -37,7 +37,7 @@ public class ArchipelagoClient
         }
         catch (Exception e)
         {
-            Plugin.BepinLogger.LogError(e);
+            ArchipelagoCatalogue.Scribe.LogError("ArchipelagoClient:Connect", e);
         }
 
         TryConnect();
@@ -48,7 +48,7 @@ public class ArchipelagoClient
     /// </summary
     private void SetupSession()
     {
-        session.MessageLog.OnMessageReceived += message => ArchipelagoConsole.LogMessage(message.ToString());
+        session.MessageLog.OnMessageReceived += message => ArchipelagoConsole.Msg(message.ToString());
         session.Items.ItemReceived += OnItemReceived;
         session.Socket.ErrorReceived += OnSessionErrorReceived;
         session.Socket.SocketClosed += OnSessionSocketClosed;
@@ -76,7 +76,7 @@ public class ArchipelagoClient
         }
         catch (Exception e)
         {
-            Plugin.BepinLogger.LogError(e);
+            ArchipelagoCatalogue.Scribe.LogError("ArchipelagoClient:TryConnect", e);
             HandleConnectResult(new LoginFailure(e.ToString()));
             attemptingConnection = false;
         }
@@ -111,13 +111,13 @@ public class ArchipelagoClient
             outText = $"Failed to connect to {ServerData.Uri} as {ServerData.SlotName}!";
             outText = failure.Errors.Aggregate(outText, (current, error) => current + $"\n    {error}");
 
-            Plugin.BepinLogger.LogError(outText);
+            ArchipelagoCatalogue.Scribe.LogInfo("ArchipelagoClient:HandleConnectResult", outText);
 
             Authenticated = false;
             Disconnect();
         }
 
-         ArchipelagoConsole.LogMessage(outText);
+         ArchipelagoConsole.Msg(outText);
          attemptingConnection = false;
     }
 
@@ -127,7 +127,7 @@ public class ArchipelagoClient
     /// </summary>
     private void Disconnect()
     {
-        Plugin.BepinLogger.LogDebug("disconnecting from server...");
+        ArchipelagoCatalogue.Scribe.LogInfo("ArchipelagoClient:Disconnect", "disconnecting from server...");
         session?.Socket.DisconnectAsync();
         session = null;
         Authenticated = false;
@@ -167,8 +167,8 @@ public class ArchipelagoClient
     /// <param name="message">message received from the server</param>
     private void OnSessionErrorReceived(Exception e, string message)
     {
-        Plugin.BepinLogger.LogError(e);
-        ArchipelagoConsole.LogMessage(message);
+        ArchipelagoCatalogue.Scribe.LogError("ArchipelagoClient:OnSessionErrorReceived", e);
+        ArchipelagoConsole.Msg(message);
     }
 
     /// <summary>
@@ -177,7 +177,7 @@ public class ArchipelagoClient
     /// <param name="reason"></param>
     private void OnSessionSocketClosed(string reason)
     {
-        Plugin.BepinLogger.LogError($"Connection to Archipelago lost: {reason}");
+        ArchipelagoCatalogue.Scribe.LogInfo("ArchipelagoClient:OnSessionSocketClosed", $"Connection to Archipelago lost: {reason}");
         Disconnect();
     }
 }

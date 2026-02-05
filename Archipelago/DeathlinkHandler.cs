@@ -63,9 +63,8 @@ public class DeathLinkHandler
     {
         deathLinks.Enqueue(deathLink);
 
-        Plugin.BepinLogger.LogDebug(deathLink.Cause.IsNullOrWhiteSpace()
-            ? $"Received Death Link from: {deathLink.Source}"
-            : deathLink.Cause);
+        var cause = String.IsNullOrWhiteSpace(deathLink.Cause) ? $"Received Death Link from: {deathLink.Source}" : deathLink.Cause;
+        ArchipelagoCatalogue.Scribe.LogInfo("DeathLinkHandler:DeathLinkReceived", cause);
     }
 
     /// <summary>
@@ -80,15 +79,15 @@ public class DeathLinkHandler
             if (deathLinks.Count < 1) return;
 
             var deathLink = deathLinks.Dequeue();
-            var cause = deathLink.Cause.IsNullOrWhiteSpace() ? GetDeathLinkCause(deathLink) : deathLink.Cause;
+            var cause = String.IsNullOrWhiteSpace(deathLink.Cause) ? GetDeathLinkCause(deathLink) : deathLink.Cause;
 
             // Implement the Catastrophe
 
-            Plugin.BepinLogger.LogMessage(cause);
+            ArchipelagoCatalogue.Scribe.LogInfo("DeathLinkHandler:Catastrophe", cause);
         }
         catch (Exception e)
         {
-            Plugin.BepinLogger.LogError(e);
+            ArchipelagoCatalogue.Scribe.LogError("DeathLinkHandler:Catastrophe", e);
         }
     }
 
@@ -115,7 +114,7 @@ public class DeathLinkHandler
             // Does nothing if death links are off
             if (!deathLinkEnabled) return;
 
-            Plugin.BepinLogger.LogMessage("Your catastrophic failure has impacted your allies...");
+            ArchipelagoCatalogue.Scribe.LogInfo("DeathLinkHandler:SendDeathLink", "Your catastrophic failure has impacted your allies...");
 
             var linkToSend = new DeathLink(slotName, cause);
 
@@ -123,7 +122,7 @@ public class DeathLinkHandler
         }
         catch (Exception e)
         {
-            Plugin.BepinLogger.LogError(e);
+            ArchipelagoCatalogue.Scribe.LogError("DeathLinkHandler:SendDeathLink", e);
         }
     }
 }

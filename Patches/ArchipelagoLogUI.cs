@@ -1,9 +1,7 @@
-using BepInEx;
-using BepInEx.Logging;
 using HarmonyLib;
 using ArchipelagoBookOfHours.Archipelago;
 using ArchipelagoBookOfHours.Components;
-using ArchipelagoBookOfHours.Utils;
+using ArchipelagoBookOfHours.Stationery;
 using UnityEngine;
 using SecretHistories.Spheres;
 
@@ -16,6 +14,6 @@ public class ArchipelagoLogUIPatch
     //[HarmonyPatch("Awake")]
     public static void Prefix(Sphere __instance)
     {
-        Plugin.BepinLogger.LogMessage("Hello from ArchipelagoLogUIPatch.Prefix()");
+        ArchipelagoCatalogue.Scribe.LogInfo("ArchipelagoLogUIPatch:Prefix", "Called");
     }
 }

@@ -1,8 +1,6 @@
-using BepInEx;
-using BepInEx.Logging;
 using HarmonyLib;
 using ArchipelagoBookOfHours.Archipelago;
-using ArchipelagoBookOfHours.Utils;
+using ArchipelagoBookOfHours.Stationery;
 using UnityEngine;
 using SecretHistories.Manifestations;
 using SecretHistories.Abstract;
@@ -16,8 +14,6 @@ public class UnshroudRoomPatch
     [HarmonyPatch("Initialise")]
     public static void Prefix(IManifestable manifestable)
     {
-        //Plugin.BepinLogger.LogMessage("Hello from UnshroudRoomPatch.Prefix(), acting on RoomManifestation.Initialise()");
-        Plugin.BepinLogger.LogMessage($"The Manifestable is: {manifestable.Id}");
-        manifestable.Unshroud(true);
+        ArchipelagoCatalogue.Scribe.LogInfo("UnshroudRoomPatch:Prefix", $"The Manifestable is: {manifestable.Id}");
     }
 }
