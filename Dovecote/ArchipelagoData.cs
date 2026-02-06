@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace ArchipelagoBookOfHours.Archipelago;
+namespace ArchipelagoBookOfHours.Dovecote;
 
+// Maybe PigeonRegistry?
 public class ArchipelagoData
 {
     public string Uri;

@@ -1,8 +1,9 @@
 ﻿using MelonLoader;
 using HarmonyLib;
 using ArchipelagoBookOfHours;
-using ArchipelagoBookOfHours.Archipelago;
+using ArchipelagoBookOfHours.Dovecote;
 using ArchipelagoBookOfHours.Stationery;
+using ArchipelagoBookOfHours.Illuminations;
 using UnityEngine;
 using System;
 
@@ -18,15 +19,15 @@ public class ArchipelagoBookOfHoursMod : MelonMod
     public const string PluginVersion = "0.0.1";
 
     public const string ModInfo = $"{PluginName} v{PluginVersion}";
-    public const string APInfo = $"Archipelago v{ArchipelagoClient.APVersion}";
+    public const string APInfo = $"Archipelago v{Columbarium.APVersion}";
 
-    public static ArchipelagoClient ArchipelagoClient;
+    public static Columbarium Columbarium;
 
     public override void OnInitializeMelon()
     {
 
         ArchipelagoCatalogue.Scribe = new Scribe();
-        ArchipelagoClient = new ArchipelagoClient();
+        Columbarium = new Columbarium();
         ArchipelagoConsole.Awake();
 
         ArchipelagoCatalogue.Scribe.LogInfo("Initialize Melon", $"{ModInfo} loaded!");
@@ -40,7 +41,7 @@ public class ArchipelagoBookOfHoursMod : MelonMod
 
         string statusMessage = "Status: ";
 
-        if (ArchipelagoClient.Authenticated)
+        if (Columbarium.Authenticated)
         {
             statusMessage += "Connected";
             GUI.Label(new Rect(16, 50, 300, 20), APInfo + " " + statusMessage);
@@ -52,23 +53,23 @@ public class ArchipelagoBookOfHoursMod : MelonMod
 
             // Host label and text entry
             GUI.Label(new Rect(16, 70, 150, 20), "Host: ");
-            ArchipelagoClient.ServerData.Uri = GUI.TextField(new Rect(150, 70, 150, 20),
-                ArchipelagoClient.ServerData.Uri);
+            Columbarium.ServerData.Uri = GUI.TextField(new Rect(150, 70, 150, 20),
+                Columbarium.ServerData.Uri);
 
             // Player label and text entry
             GUI.Label(new Rect(16, 90, 150, 20), "Player Name: ");
-            ArchipelagoClient.ServerData.SlotName = GUI.TextField(new Rect(150, 90, 150, 20),
-                ArchipelagoClient.ServerData.SlotName);
+            Columbarium.ServerData.SlotName = GUI.TextField(new Rect(150, 90, 150, 20),
+                Columbarium.ServerData.SlotName);
  
             // Password label and text entry
             GUI.Label(new Rect(16, 110, 150, 20), "Password: ");
-            ArchipelagoClient.ServerData.Password = GUI.TextField(new Rect(150, 110, 150, 20),
-                ArchipelagoClient.ServerData.Password);
+            Columbarium.ServerData.Password = GUI.TextField(new Rect(150, 110, 150, 20),
+                Columbarium.ServerData.Password);
 
             if (GUI.Button(new Rect(16, 130, 100, 20), "Connect") &&
-                !String.IsNullOrWhiteSpace(ArchipelagoClient.ServerData.SlotName))
+                !String.IsNullOrWhiteSpace(Columbarium.ServerData.SlotName))
             {
-                ArchipelagoClient.Connect();
+                Columbarium.Connect();
             }
         }
     }

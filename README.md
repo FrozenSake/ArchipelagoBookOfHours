@@ -16,26 +16,30 @@ Harmony -> https://harmony.pardeike.net/articles/basics.html
 
 In keeping with the spirit of Book of Hours, and the Code we're interacting with here, I've decided to use some special (but made up) terminology in my mod:
 
-## Redactions (Currently `Patches`)
+## Redactions (`Patches`)
 
-Various harmony patches
+Redactions are alterations to the existing history, to bring it in line with this Sixth History. They represent Harmony Patches, and can take many forms.
 
-### Specters
+### Specters (`Loggers`)
 
-### Inkstains
+### Inkstains (`Replacements`)
 
-### Daemons
+### Daemons (`Queues`)
 
-## Dovecote (Currently `Archipelago`)
+## Dovecote (`Archipelago`)
 
 Communicates with the Archipelago Server
 
-## Illuminations (Currently `Components`)
+### Columbarium (`ArchipelagoClient`)
 
-UI Elements
+The primary building in this Dovecote, where the birds are stored and messages received.
 
-## Stationery (Currently `Utils`)
+## Illuminations (`Components`)
 
-Miscellaneous helpers and utilities
+Illumninations include the borders, illustrations, and other visual accretia of the great works. They represent User Interface components.
+
+## Stationery (`Utils`)
+
+Stationery represent the bits and bobs necessary to assemble great works.
 
 ### Scribe (Logger)

@@ -1,16 +1,15 @@
 using HarmonyLib;
-using ArchipelagoBookOfHours.Archipelago;
+using ArchipelagoBookOfHours.Dovecote;
 using ArchipelagoBookOfHours.Stationery;
 using UnityEngine;
 using SecretHistories.Spheres;
 
-namespace ArchipelagoBookOfHours.Components
-{
+namespace ArchipelagoBookOfHours.Illuminations;
+
     public class LogButton : MonoBehaviour
 {
 	public void OnClick()
 	{
 		//Watchman.Get<LocalNexus>().ToggleMenuEvent.Invoke();
 	}
-}
 }

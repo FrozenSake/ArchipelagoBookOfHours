@@ -1,10 +1,10 @@
 using HarmonyLib;
-using ArchipelagoBookOfHours.Archipelago;
+using ArchipelagoBookOfHours.Dovecote;
 using ArchipelagoBookOfHours.Stationery;
 using UnityEngine;
 using SecretHistories.Meta;
 
-namespace ArchipelagoBookOfHours.Patches;
+namespace ArchipelagoBookOfHours.Redactions;
 
 [HarmonyPatch(typeof(MiscMalleary))]
 public class MiscMallearySpecters

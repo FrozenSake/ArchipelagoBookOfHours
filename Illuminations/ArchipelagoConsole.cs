@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ArchipelagoBookOfHours.Archipelago;
+using ArchipelagoBookOfHours.Dovecote;
 using ArchipelagoBookOfHours;
 using UnityEngine;
 
-namespace ArchipelagoBookOfHours.Stationery;
+namespace ArchipelagoBookOfHours.Illuminations;
 
 // Shamelessly retyped (so I'd learn from it) from https://github.com/alwaysintreble/ArchipelagoBepInExPluginTemplate/blob/master/templates/ArchipelagoBepin5Template/Utils/ArchipelagoConsole.cs
 // who shamelessly acquired it from oc2-modding https://github.com/toasterparty/oc2-modding/blob/main/OC2Modding/GameLog.cs
@@ -75,7 +75,7 @@ public static class ArchipelagoConsole
         CommandText = GUI.TextField(CommandTextRect, CommandText);
         if (!String.IsNullOrWhiteSpace(CommandText) && GUI.Button(SendCommandButton, "Send"))
         {
-            ArchipelagoBookOfHoursMod.ArchipelagoClient.SendMessage(CommandText);
+            ArchipelagoBookOfHoursMod.Columbarium.SendMessage(CommandText);
             // Clear after sending
             CommandText = "";
         }

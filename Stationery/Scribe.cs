@@ -4,6 +4,9 @@ using System;
 
 namespace ArchipelagoBookOfHours.Stationery;
 
+/// <summary>
+/// The scribe records the secrets whispered by the machines and ghosts. It acts as a primary console logger.
+/// </summary>
 public class Scribe
 {
     private readonly MelonLogger.Instance _logger;

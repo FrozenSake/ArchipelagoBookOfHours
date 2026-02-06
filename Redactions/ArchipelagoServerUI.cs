@@ -1,20 +1,20 @@
 using HarmonyLib;
-using ArchipelagoBookOfHours.Archipelago;
-using ArchipelagoBookOfHours.Components;
+using ArchipelagoBookOfHours.Dovecote;
+using ArchipelagoBookOfHours.Illuminations;
 using ArchipelagoBookOfHours.Stationery;
 using UnityEngine;
 using SecretHistories.Spheres;
 
-namespace ArchipelagoBookOfHours.Patches;
+namespace ArchipelagoBookOfHours.Redactions;
 
 //[HarmonyPatch(typeof(PermanentRootSphereSpec))]
-public class ArchipelagoServerUIPatch
+public class ArchipelagoServerUIRedaction
 {
     //[HarmonyPrefix]
     //[HarmonyPatch("Awake")]
     public static void Prefix(Sphere __instance)
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("ArchipelagoServerUIPatch:Prefix", "Called");
+        ArchipelagoCatalogue.Scribe.LogInfo("ArchipelagoServerUIRedaction:Prefix", "Called");
     }
 }
 
@@ -23,7 +23,7 @@ public class ArchipelagoServerUIPatch
 // It will go in the top right
 // It will essentially be a RectTransform
 // It will contain two buttons
-// ArchipelagoBookOfHours.Components.LogButton and .Serverbutton
+// ArchipelagoBookOfHours.Illuminations.LogButton and .Serverbutton
 // They will be buttons that display the Archipelago log and the Archipelago server dialogue
 
 

@@ -1,7 +1,7 @@
 using MelonLoader;
 using HarmonyLib;
 using ArchipelagoBookOfHours;
-using ArchipelagoBookOfHours.Archipelago;
+using ArchipelagoBookOfHours.Dovecote;
 using ArchipelagoBookOfHours.Stationery;
 using UnityEngine;
 

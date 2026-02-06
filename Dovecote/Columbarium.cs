@@ -8,10 +8,14 @@ using Archipelago.MultiClient.Net.Helpers;
 using Archipelago.MultiClient.Net.MessageLog.Messages;
 using Archipelago.MultiClient.Net.Packets;
 using ArchipelagoBookOfHours.Stationery;
+using ArchipelagoBookOfHours.Illuminations;
 
-namespace ArchipelagoBookOfHours.Archipelago;
+namespace ArchipelagoBookOfHours.Dovecote;
 
-public class ArchipelagoClient
+/// <summary>
+/// The Columbarium is the primary structure of the dovecote, and handles direct communication with the Archipelago Server
+/// </summary>
+public class Columbarium
 {
     public const string APVersion = "0.6.6";
     private const string Game = "Book of Hours";
@@ -37,7 +41,7 @@ public class ArchipelagoClient
         }
         catch (Exception e)
         {
-            ArchipelagoCatalogue.Scribe.LogError("ArchipelagoClient:Connect", e);
+            ArchipelagoCatalogue.Scribe.LogError("Columbarium:Connect", e);
         }
 
         TryConnect();
@@ -76,7 +80,7 @@ public class ArchipelagoClient
         }
         catch (Exception e)
         {
-            ArchipelagoCatalogue.Scribe.LogError("ArchipelagoClient:TryConnect", e);
+            ArchipelagoCatalogue.Scribe.LogError("Columbarium:TryConnect", e);
             HandleConnectResult(new LoginFailure(e.ToString()));
             attemptingConnection = false;
         }
@@ -111,7 +115,7 @@ public class ArchipelagoClient
             outText = $"Failed to connect to {ServerData.Uri} as {ServerData.SlotName}!";
             outText = failure.Errors.Aggregate(outText, (current, error) => current + $"\n    {error}");
 
-            ArchipelagoCatalogue.Scribe.LogInfo("ArchipelagoClient:HandleConnectResult", outText);
+            ArchipelagoCatalogue.Scribe.LogInfo("Columbarium:HandleConnectResult", outText);
 
             Authenticated = false;
             Disconnect();
@@ -127,7 +131,7 @@ public class ArchipelagoClient
     /// </summary>
     private void Disconnect()
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("ArchipelagoClient:Disconnect", "disconnecting from server...");
+        ArchipelagoCatalogue.Scribe.LogInfo("Columbarium:Disconnect", "disconnecting from server...");
         session?.Socket.DisconnectAsync();
         session = null;
         Authenticated = false;
@@ -167,7 +171,7 @@ public class ArchipelagoClient
     /// <param name="message">message received from the server</param>
     private void OnSessionErrorReceived(Exception e, string message)
     {
-        ArchipelagoCatalogue.Scribe.LogError("ArchipelagoClient:OnSessionErrorReceived", e);
+        ArchipelagoCatalogue.Scribe.LogError("Columbarium:OnSessionErrorReceived", e);
         ArchipelagoConsole.Msg(message);
     }
 
@@ -177,7 +181,7 @@ public class ArchipelagoClient
     /// <param name="reason"></param>
     private void OnSessionSocketClosed(string reason)
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("ArchipelagoClient:OnSessionSocketClosed", $"Connection to Archipelago lost: {reason}");
+        ArchipelagoCatalogue.Scribe.LogInfo("Columbarium:OnSessionSocketClosed", $"Connection to Archipelago lost: {reason}");
         Disconnect();
     }
 }

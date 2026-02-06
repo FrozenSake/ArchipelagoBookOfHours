@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Archipelago.MultiClient.Net.BounceFeatures.DeathLink;
 using BepInEx;
 
-namespace ArchipelagoBookOfHours.Archipelago;
+namespace ArchipelagoBookOfHours.Dovecote;
 
 
 /// DeathLink is defined https://archipelagomw.github.io/Archipelago.MultiClient.Net/api/Archipelago.MultiClient.Net.BounceFeatures.DeathLink.DeathLink.html

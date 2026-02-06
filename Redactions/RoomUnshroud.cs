@@ -1,19 +1,19 @@
 using HarmonyLib;
-using ArchipelagoBookOfHours.Archipelago;
+using ArchipelagoBookOfHours.Dovecote;
 using ArchipelagoBookOfHours.Stationery;
 using UnityEngine;
 using SecretHistories.Manifestations;
 using SecretHistories.Abstract;
 
-namespace ArchipelagoBookOfHours.Patches;
+namespace ArchipelagoBookOfHours.Redactions;
 
 [HarmonyPatch(typeof(RoomManifestation))]
-public class UnshroudRoomPatch
+public class UnshroudRoomRedaction
 {
     [HarmonyPrefix]
     [HarmonyPatch("Initialise")]
     public static void Prefix(IManifestable manifestable)
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("UnshroudRoomPatch:Prefix", $"The Manifestable is: {manifestable.Id}");
+        ArchipelagoCatalogue.Scribe.LogInfo("UnshroudRoomRedaction:Prefix", $"The Manifestable is: {manifestable.Id}");
     }
 }
