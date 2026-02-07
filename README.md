@@ -11,6 +11,17 @@ Harmony -> https://harmony.pardeike.net/articles/basics.html
 5. `dotnet build` the client
 6. Copy the `ArchipelagoBookOfHours.dll` dll to the Mod folder in book of hours
 
+# Local Setup
+
+1. Your dev flow is your business if you want to mess with this code.
+2. Create an APQuest multiworld for yourself
+    1. Generate a yaml (use Player1 as your name for easy set-up)
+    2. Generate the multiworld
+    3. Run the local server
+3. If you wanna connect to a different game, that's all stored in `Dovecote/ArchipelagoData.ArchipelagoData()`
+4. Pop open the text client, join your localhost as Player1
+5. Play with !getitem
+
 # Glossary
 
 In keeping with the spirit of Book of Hours, and the Code we're interacting with here, I've decided to lean into the Sixth History by using some terminology in my mod:
