@@ -22,6 +22,10 @@ Harmony -> https://harmony.pardeike.net/articles/basics.html
 4. Pop open the text client, join your localhost as Player1
 5. Play with !getitem
 
+# KNOWN BUG
+
+There's a crash when you exit the game, it's due to how I'm handling threads and my shutdown and cleanup logic -- pretty sure I have a log call to an already closed thread, just haven't prioritized fixing it since this is still 0.0.1
+
 # Glossary
 
 In keeping with the spirit of Book of Hours, and the Code we're interacting with here, I've decided to lean into the Sixth History by using some terminology in my mod:
