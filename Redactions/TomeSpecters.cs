@@ -15,7 +15,7 @@ public class BookManifestationSpecter
     [HarmonyPatch("Initialise")]
     public static void Prefix(IManifestable manifestable)
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("BookManifestationSpecter:Prefix", $"The Manifestable for this BookManifestationSpecter is: {manifestable.Id}");
+        // ArchipelagoCatalogue.Scribe.LogInfo("BookManifestationSpecter:Prefix", $"The Manifestable for this BookManifestationSpecter is: {manifestable.Id}");
         manifestable.Unshroud();
     }
 
@@ -23,7 +23,7 @@ public class BookManifestationSpecter
     [HarmonyPatch("UpdateStateAimedAtSphere")]
     public static void Prefix(IManifestable manifestable, Sphere aimedAtSphere)
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("BookManifestationSpecter:Prefix", $"This Specter is on: {manifestable.Id}. The sphere's type is: {typeof(Sphere)}");
+        // ArchipelagoCatalogue.Scribe.LogInfo("BookManifestationSpecter:Prefix", $"This Specter is on: {manifestable.Id}. The sphere's type is: {typeof(Sphere)}");
         
     }
 }

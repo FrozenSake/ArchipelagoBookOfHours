@@ -14,6 +14,6 @@ public class UnshroudRoomRedaction
     [HarmonyPatch("Initialise")]
     public static void Prefix(IManifestable manifestable)
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("UnshroudRoomRedaction:Prefix", $"The Manifestable is: {manifestable.Id}");
+        //ArchipelagoCatalogue.Scribe.LogInfo("UnshroudRoomRedaction:Prefix", $"The Manifestable is: {manifestable.Id}");
     }
 }

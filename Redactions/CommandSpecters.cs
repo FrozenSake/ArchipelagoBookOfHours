@@ -23,7 +23,7 @@ public class ElementStackCreationCommandSpecter
     [HarmonyPatch("Execute")]
     public static void Prefix()
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("ElementStackCreationCommandSpecter:Prefix", "Called");
+        // ArchipelagoCatalogue.Scribe.LogInfo("ElementStackCreationCommandSpecter:Prefix", "Called");
     }
 }
 
@@ -39,7 +39,7 @@ public class ElementStackXTriggerCommandSpecter
     [HarmonyPatch(new Type[] { typeof(Token) })]
     public static void Prefix()
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("ElementStackXTriggerCommandSpecter:Prefix", "Called");
+        // ArchipelagoCatalogue.Scribe.LogInfo("ElementStackXTriggerCommandSpecter:Prefix", "Called");
     }
 }
 
@@ -56,7 +56,7 @@ public class EnviroFxCommandSpecter
     [HarmonyPatch(new Type[] { typeof(Token) })]
     public static void Prefix()
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("EnviroFxCommandSpecter:Prefix", "Called");
+        // ArchipelagoCatalogue.Scribe.LogInfo("EnviroFxCommandSpecter:Prefix", "Called");
     }
 }
 
@@ -68,7 +68,7 @@ public class MinimalPayloadCreationCommandSpecter
     [HarmonyPatch("Execute")]
     public static void Prefix()
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("MinimalPayloadCreationCommandSpecter:Prefix", "Called");
+        // ArchipelagoCatalogue.Scribe.LogInfo("MinimalPayloadCreationCommandSpecter:Prefix", "Called");
     }
 }
 
@@ -80,7 +80,7 @@ public class NullElementStackCreationCommandSpecter
     [HarmonyPatch("Execute")]
     public static void Prefix()
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("NullElementStackCreationCommandSpecter:Prefix", "Called");
+        // ArchipelagoCatalogue.Scribe.LogInfo("NullElementStackCreationCommandSpecter:Prefix", "Called");
     }
 }
 
@@ -92,7 +92,7 @@ public class PopulateNxCommandSpecter
     [HarmonyPatch("Execute")]
     public static void Prefix()
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("PopulateNxCommandSpecter:Prefix", "Called");
+        // ArchipelagoCatalogue.Scribe.LogInfo("PopulateNxCommandSpecter:Prefix", "Called");
     }
 }
 
@@ -104,7 +104,7 @@ public class PopulateTerrainFeatureCommandSpecter
     [HarmonyPatch("Execute")]
     public static void Prefix()
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("PopulateTerrainFeatureCommandSpecter:Prefix", "Called");
+        // ArchipelagoCatalogue.Scribe.LogInfo("PopulateTerrainFeatureCommandSpecter:Prefix", "Called");
     }
 }
 
@@ -116,7 +116,7 @@ public class PopulateXamanekCommandSpecter
     [HarmonyPatch("Execute")]
     public static void Prefix()
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("PopulateXamanekCommandSpecter:Prefix", "Called");
+        // ArchipelagoCatalogue.Scribe.LogInfo("PopulateXamanekCommandSpecter:Prefix", "Called");
     }
 }
 
@@ -145,7 +145,7 @@ public class RecipeCompletionEffectCommandSpecter
     [HarmonyPatch(new Type[] { typeof(Situation) })]
     public static void Prefix()
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("RecipeCompletionEffectCommandSpecter:Prefix", "Called");
+        // ArchipelagoCatalogue.Scribe.LogInfo("RecipeCompletionEffectCommandSpecter:Prefix", "Called");
     }
 }
 
@@ -159,7 +159,7 @@ public class RootPopulationCommandSpecter
     [HarmonyPatch("Execute")]
     public static void Prefix()
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("RootPopulationCommandSpecter:Prefix", "Called");
+        // ArchipelagoCatalogue.Scribe.LogInfo("RootPopulationCommandSpecter:Prefix", "Called");
     }
 }
 
@@ -171,7 +171,7 @@ public class SetupChamberlainCommandSpecter
     [HarmonyPatch("Execute")]
     public static void Prefix()
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("SetupChamberlainCommandSpecter:Prefix", "Called");
+        // ArchipelagoCatalogue.Scribe.LogInfo("SetupChamberlainCommandSpecter:Prefix", "Called");
     }
 }
 
@@ -190,7 +190,7 @@ public class SituationCreationCommandSpecter
     [HarmonyPatch("Execute")]
     public static void Prefix()
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("SituationCreationCommandSpecter:Prefix", "Called");
+        // ArchipelagoCatalogue.Scribe.LogInfo("SituationCreationCommandSpecter:Prefix", "Called");
     }
 }
 
@@ -205,7 +205,7 @@ public class SituationXTriggerCommandSpecter
     [HarmonyPatch(new Type[] { typeof(Token) })]
     public static void Prefix()
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("SituationXTriggerCommandSpecter:Prefix", "Called");
+        // ArchipelagoCatalogue.Scribe.LogInfo("SituationXTriggerCommandSpecter:Prefix", "Called");
     }
 }
 
@@ -219,7 +219,7 @@ public class SpawnNewTokenFromThisOneCommandSpecter
     [HarmonyPatch(new Type[] { typeof(Token) })]
     public static void Prefix()
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("SpawnNewTokenFromThisOneCommandSpecter:Prefix", "Called");
+        // ArchipelagoCatalogue.Scribe.LogInfo("SpawnNewTokenFromThisOneCommandSpecter:Prefix", "Called");
     }
 }
 
@@ -233,14 +233,14 @@ public class SphereCreationCommandSpecter
     [HarmonyPatch(new Type[] { typeof(FucineRoot), typeof(Context) })]
     public static void Prefix()
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("SphereCreationCommandSpecter:Prefix", "Called");
+        // ArchipelagoCatalogue.Scribe.LogInfo("SphereCreationCommandSpecter:Prefix", "Called");
     }
 
     [HarmonyPatch("ExecuteOn")]
     [HarmonyPatch(new Type[] { typeof(AbstractDominion), typeof(Context) })]
     public static void Postfix()
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("SphereCreationCommandSpecter:Postfix", "Called");
+        // ArchipelagoCatalogue.Scribe.LogInfo("SphereCreationCommandSpecter:Postfix", "Called");
     }
 }
 
@@ -262,7 +262,7 @@ public class TokenCreationCommandSpecter
     [HarmonyPatch("Execute")]
     public static void Prefix()
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("TokenCreationCommandSpecter:Prefix", "Called");
+        // ArchipelagoCatalogue.Scribe.LogInfo("TokenCreationCommandSpecter:Prefix", "Called");
     }
 }
 
@@ -276,7 +276,7 @@ public class XextCommandSpecter
     [HarmonyPatch(new Type[] { typeof(Token) })]
     public static void Prefix()
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("XextCommandSpecter:Prefix", "Called");
+        // ArchipelagoCatalogue.Scribe.LogInfo("XextCommandSpecter:Prefix", "Called");
     }
 }
 

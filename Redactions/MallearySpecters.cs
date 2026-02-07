@@ -13,7 +13,7 @@ public class MiscMallearySpecters
     [HarmonyPatch("Start")]
     public static void Prefix(MiscMalleary __instance)
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("MiscMallearySpecters:Prefix", "Called");
+        // ArchipelagoCatalogue.Scribe.LogInfo("MiscMallearySpecters:Prefix", "Called");
     }
 }
 
@@ -24,9 +24,9 @@ public class MiscMallearySpecters1
     [HarmonyPatch("BroadcastFX")]
     public static void Prefix(MiscMalleary __instance, ref string ___input)
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("MiscMallearySpecters1:Prefix", "Called");
+        // ArchipelagoCatalogue.Scribe.LogInfo("MiscMallearySpecters1:Prefix", "Called");
 	    if (!string.IsNullOrEmpty(___input)) {
-            ArchipelagoCatalogue.Scribe.LogInfo("MiscMallearySpecters1:Prefix", $"The input to this MiscMalleary was: {___input}");
+            // ArchipelagoCatalogue.Scribe.LogInfo("MiscMallearySpecters1:Prefix", $"The input to this MiscMalleary was: {___input}");
         }
     }
 }
@@ -38,9 +38,9 @@ public class MiscMallearySpecters2
     [HarmonyPatch("OpenAllRooms")]
     public static void Prefix(MiscMalleary __instance, string containingPath, ref string ___input)
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("MiscMallearySpecters2:Prefix", "Called");
+        // ArchipelagoCatalogue.Scribe.LogInfo("MiscMallearySpecters2:Prefix", "Called");
 	    if (!string.IsNullOrEmpty(___input)) {
-            ArchipelagoCatalogue.Scribe.LogInfo("MiscMallearySpecters2:Prefix", $"The input to this MiscMalleary was: {___input}");
+            // ArchipelagoCatalogue.Scribe.LogInfo("MiscMallearySpecters2:Prefix", $"The input to this MiscMalleary was: {___input}");
         }
     }
 }
@@ -52,9 +52,9 @@ public class MiscMallearySpecters3
     [HarmonyPatch("SetHouse")]
     public static void Prefix(MiscMalleary __instance, ref string ___input)
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("MiscMallearySpecters3:Prefix", "Called");
+        // ArchipelagoCatalogue.Scribe.LogInfo("MiscMallearySpecters3:Prefix", "Called");
 	    if (!string.IsNullOrEmpty(___input)) {
-            ArchipelagoCatalogue.Scribe.LogInfo("MiscMallearySpecters3:Prefix", $"The input to this MiscMalleary was: {___input}");
+            // ArchipelagoCatalogue.Scribe.LogInfo("MiscMallearySpecters3:Prefix", $"The input to this MiscMalleary was: {___input}");
         }
     }
 
@@ -67,7 +67,7 @@ public class MiscMallearySpecters4
     [HarmonyPatch("LoadGame")]
     public static void Prefix(MiscMalleary __instance)
     {
-        ArchipelagoCatalogue.Scribe.LogInfo("MiscMallearySpecters4:Prefix", "Called");
+        // ArchipelagoCatalogue.Scribe.LogInfo("MiscMallearySpecters4:Prefix", "Called");
     }
 }
 
