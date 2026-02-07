@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ArchipelagoBookOfHours.Dovecote;
 
-// Maybe PigeonRegistry?
+// Maybe Rolodex?
 public class ArchipelagoData
 {
     public string Uri;
@@ -26,7 +26,7 @@ public class ArchipelagoData
 
     public ArchipelagoData()
     {
-        Uri = "localhost";
+        Uri = "localhost:38281";
         SlotName = "Player1";
         CheckedLocations = new();
     }

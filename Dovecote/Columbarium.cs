@@ -18,12 +18,16 @@ namespace ArchipelagoBookOfHours.Dovecote;
 public class Columbarium
 {
     public const string APVersion = "0.6.6";
-    private const string Game = "Book of Hours";
+    //private const string Game = "Book of Hours";
+    private const string Game = "APQuest";
 
     public static bool Authenticated;
     private bool attemptingConnection;
+    public bool Connected;
 
     public static ArchipelagoData ServerData = new();
+    public static Dovemail Dovemail;
+    public static Postman Postman = new();
     private DeathLinkHandler DeathLinkHandler;
     private ArchipelagoSession session;
 
@@ -45,6 +49,7 @@ public class Columbarium
         }
 
         TryConnect();
+        Connected = true;
     }
 
     /// <summary>
@@ -52,8 +57,9 @@ public class Columbarium
     /// </summary
     private void SetupSession()
     {
+        ArchipelagoCatalogue.Scribe.LogInfo("Columbarium:SetupSession", "Setting up session and handlers");
         session.MessageLog.OnMessageReceived += message => ArchipelagoConsole.Msg(message.ToString());
-        session.Items.ItemReceived += OnItemReceived;
+        session.Items.ItemReceived += Postman.DeliverPackage;
         session.Socket.ErrorReceived += OnSessionErrorReceived;
         session.Socket.SocketClosed += OnSessionSocketClosed;
     }
@@ -72,7 +78,7 @@ public class Columbarium
                     session.TryConnectAndLogin(
                         Game,
                         ServerData.SlotName,
-                        ItemsHandlingFlags.NoItems,
+                        ItemsHandlingFlags.AllItems,
                         new Version(APVersion),
                         password: ServerData.Password,
                         requestSlotData: ServerData.NeedSlotData
@@ -83,6 +89,7 @@ public class Columbarium
             ArchipelagoCatalogue.Scribe.LogError("Columbarium:TryConnect", e);
             HandleConnectResult(new LoginFailure(e.ToString()));
             attemptingConnection = false;
+            Connected = false;
         }
     }
 
@@ -107,6 +114,8 @@ public class Columbarium
             // Handle checked Locations
             session.Locations.CompleteLocationChecksAsync(ServerData.CheckedLocations.ToArray());
 
+            Dovemail = new Dovemail(session, success.Slot);
+
             outText = $"Succesfully connected to {ServerData.Uri} as {ServerData.SlotName}!";
         }
         else
@@ -123,13 +132,14 @@ public class Columbarium
 
          ArchipelagoConsole.Msg(outText);
          attemptingConnection = false;
+         Connected = true;
     }
 
 
     /// <summary>
     /// something went wrong, or we need to properly disconnect from the server. cleanup and re null our session
     /// </summary>
-    private void Disconnect()
+    public void Disconnect()
     {
         ArchipelagoCatalogue.Scribe.LogInfo("Columbarium:Disconnect", "disconnecting from server...");
         session?.Socket.DisconnectAsync();
@@ -146,22 +156,14 @@ public class Columbarium
         session.Socket.SendPacketAsync(new SayPacket { Text = message });
     }
 
-
-    /// <summary>
-    /// An item was received. Wow! Yay!
+     /// <summary>
+    ///     Runs on Every Unity's OnUpdate(). Passes the update along to child handlers, if the session was started.
     /// </summary>
-    /// <param name="helper">item helper which we can grab our item from</param>
-    private void OnItemReceived(ReceivedItemsHelper helper)
-    {
-        var receivedItem = helper.DequeueItem();
-
-        // Exit early if we've already handled this item
-        if (helper.Index <= ServerData.Index) return;
-
-        ServerData.Index++;
-
-        // Reward code goes here
-        // Use a local queue if reception does not guarantee a valid state to be awarded the item
+    public void OnUpdate() {
+        if (Dovemail != null) {
+            //ArchipelagoCatalogue.Scribe.LogInfo("Columbarium:OnUpdate", "Heartbeat");
+            Dovemail.OnUpdate();
+        }
     }
 
     /// <summary>
@@ -170,9 +172,9 @@ public class Columbarium
     /// <param name="e">thrown exception from our socket</param>
     /// <param name="message">message received from the server</param>
     private void OnSessionErrorReceived(Exception e, string message)
-    {
-        ArchipelagoCatalogue.Scribe.LogError("Columbarium:OnSessionErrorReceived", e);
-        ArchipelagoConsole.Msg(message);
+    {   
+            ArchipelagoCatalogue.Scribe.LogError("Columbarium:OnSessionErrorReceived", e);
+            ArchipelagoConsole.Msg(message);
     }
 
     /// <summary>
