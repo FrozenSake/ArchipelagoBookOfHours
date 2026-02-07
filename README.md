@@ -11,10 +11,9 @@ Harmony -> https://harmony.pardeike.net/articles/basics.html
 5. `dotnet build` the client
 6. Copy the `ArchipelagoBookOfHours.dll` dll to the BepInEx plugins folder in book of hours
 
+# Glossary
 
-# Code Terminology
-
-In keeping with the spirit of Book of Hours, and the Code we're interacting with here, I've decided to use some special (but made up) terminology in my mod:
+In keeping with the spirit of Book of Hours, and the Code we're interacting with here, I've decided to lean into the Sixth History by using some terminology in my mod:
 
 ## Redactions (`Patches`)
 
@@ -24,15 +23,25 @@ Redactions are alterations to the existing history, to bring it in line with thi
 
 ### Inkstains (`Replacements`)
 
-### Daemons (`Queues`)
-
 ## Dovecote (`Archipelago`)
 
 Communicates with the Archipelago Server
 
 ### Columbarium (`ArchipelagoClient`)
 
-The primary building in this Dovecote, where the birds are stored and messages received.
+The primary building in this Dovecote, where the birds are stored and messages received. It's the core client for communicating with and receiving messages from the Archipelago Client.
+
+### Catastrophizer (`DeathLinkHandler`)
+
+### Dovemail (`ItemHandler`)
+
+Dovemail handles packages, both into the game and out of the game.
+
+### Postman (`ItemUnlockHandler`)
+
+The postman delivers packages from the Dovecote to the game
+
+#### Packages (`Items`)
 
 ## Illuminations (`Components`)
 
@@ -42,4 +51,6 @@ Illumninations include the borders, illustrations, and other visual accretia of 
 
 Stationery represent the bits and bobs necessary to assemble great works.
 
-### Scribe (Logger)
+### Scribe (`Logger`)
+
+The scribe records the whispers and groans of the machinations, and the rustling feathers of the Dovecote. It is the primary logger.

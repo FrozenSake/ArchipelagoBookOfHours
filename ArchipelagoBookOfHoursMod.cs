@@ -33,6 +33,12 @@ public class ArchipelagoBookOfHoursMod : MelonMod
         ArchipelagoCatalogue.Scribe.LogInfo("Initialize Melon", $"{ModInfo} loaded!");
     }
 
+    public override void OnUpdate()
+    {
+        Columbarium.OnUpdate();
+    }
+
+    // This can be faceted out into an Illumination, but for now it's here to make things simple
     public override void OnGUI()
     {
         // Show the Mod is loaded
@@ -45,6 +51,10 @@ public class ArchipelagoBookOfHoursMod : MelonMod
         {
             statusMessage += "Connected";
             GUI.Label(new Rect(16, 50, 300, 20), APInfo + " " + statusMessage);
+            if (GUI.Button(new Rect(16, 130, 100, 20), "Disconnect"))
+            {
+                Columbarium.Disconnect();
+            }
         }
         else
         {
